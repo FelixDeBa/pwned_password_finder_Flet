@@ -1,4 +1,4 @@
-# A Flet app
+# Buscador de contraseñas en Brechas publicas en HIBP, desarrollada en Flet
 Aplicacion desarrollada en flet para revisar si una contraseña ha sido encontrada en una brecha publica registrada en haveibeenpwned
 
 La intencion de esta aplicacion desarrollada en flet es posteriormente exportarla a android, por lo que para ejecutarla de la forma en la que esta pensada es necesario descargar la aplicacion Flet de la Google Play Store, posteriormente ejecutar la aplicacion con: 
