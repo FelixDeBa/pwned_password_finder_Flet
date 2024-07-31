@@ -7,9 +7,12 @@ from time import sleep
 HEADERS={"user-agent":"Checador de Contraseñas pwneadas v0.1 by Felix"}
 
 def main(page):
-    page.title = "Checador de Contraseñas Crackeadas"
+    page.title = "Pwned Password Finder"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     
+    def test(e):
+        page.launch_url('https://haveibeenpwned.com/Passwords')
+        
     def buscar_pwd(hashes_json, hash_pwd):
         for hash_json in hashes_json:
             if hash_pwd == hash_json['hash'].lower():
@@ -67,7 +70,7 @@ def main(page):
                 
                 busqueda=buscar_pwd(hashes_json, hash_pwd.lower())
                 if busqueda['encontrado']:
-                    lbl_resultado.value=f"Contraseña encontrada {busqueda['cuenta']} veces en bases de datos de Contraseñas crackeadas"
+                    lbl_resultado.value=f"Password has been cracked at least {busqueda['cuenta']}times."
                     lbl_resultado.color="red"
                 else:
                     lbl_resultado.value=f"No se encontro la palabra en bases de datos de Contraseñas crackeadas"
@@ -129,10 +132,21 @@ def main(page):
         ],
         horizontal_alignment = ft.CrossAxisAlignment.CENTER,  
     )
+    
+    page.navigation_bar = ft.NavigationBar(
+        destinations=[
+            ft.NavigationBarDestination(
+                icon=ft.icons.INFO,
+                label="This program uses haveibeenpwned API, see original aplication at \nhttps://haveibeenpwned.com/Passwords \nto learn more",
+            ),
+        ],
+        on_change=test
+    )
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.add(
         columnas
     )
+    page.adaptive = True    
     page.update()
     
 
